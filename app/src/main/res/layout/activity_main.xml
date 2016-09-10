@@ -34,16 +34,25 @@
 
             <TextView
                 android:id="@+id/bill_text"
-                android:layout_width="144dp"
+                android:layout_width="124dp"
                 android:layout_height="match_parent"
                 android:text="Bill Total"
                 android:textAlignment="gravity"
                 android:gravity="center" />
+            <TextView
+                android:id="@+id/dollar_text"
+                android:layout_width="16dp"
+                android:layout_height="match_parent"
+                android:text="$"
+                android:textSize="20sp"
+                android:textAlignment="gravity"
+                android:gravity="center" />
 
             <EditText
+                android:id="@+id/bill_input"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:hint="$0.00"/>
 
         </LinearLayout>
@@ -84,8 +93,8 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/tip_text_view"
-                android:layout_width="64dp"
+                android:id="@+id/tip_percent_text_view"
+                android:layout_width="56dp"
                 android:layout_height="wrap_content"
                 android:textAlignment="gravity"
                 android:gravity="center"
@@ -133,32 +142,56 @@
             <Button
                 android:layout_width="64dp"
                 android:layout_height="match_parent"
-                android:onClick="decrementTip"
+                android:onClick="decrementParty"
                 android:textAlignment="gravity"
                 android:gravity="center"
                 android:text="-"
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/people_text_view"
-                android:layout_width="64dp"
+                android:id="@+id/party_text_view"
+                android:layout_width="56dp"
                 android:layout_height="wrap_content"
                 android:textAlignment="gravity"
                 android:gravity="center"
-                android:text="2"
+                android:text="1"
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />
 
             <Button
                 android:layout_width="64dp"
                 android:layout_height="48dp"
-                android:onClick="incrementTip"
+                android:onClick="incrementParty"
                 android:text="+"
                 android:textAlignment="gravity"
                 android:gravity="center"
                 android:textSize="20sp" />
 
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/overall_total_header_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="gravity"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:gravity="center"
+            android:text="Overall Total:"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/overall_total_bill_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="gravity"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:gravity="center"
+            android:text="$0.00"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/total_header_text_view"
