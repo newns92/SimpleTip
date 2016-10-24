@@ -12,64 +12,64 @@ import static java.lang.Integer.valueOf;
 
 public class MainActivity extends AppCompatActivity {
 
-/********************************************
-*               GLOBAL VARIABLES            *
-*********************************************/
+/*********************************************************
+*               GLOBAL VARIABLES                         *
+*********************************************************/
 
     private EditText startingBillAmount;
-    private float tip;
-    private int party;
-    private SeekBar tipPercent;
+    private float tipPercent;
+    private int partySize;
+    private SeekBar tipPercentSlider;
     private TextView tipPercentDisplay;
     private TextView partySizeDisplay;
-    private SeekBar partySize;
+    private SeekBar partySizeSlider;
     private float finalBillAmount;
     private float totalPerPerson;
+
+/********************************************************
+********************************************************/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        /* Inflate main activity XML layout */
         setContentView(R.layout.activity_main);
 
+        /* Find the Views w/in main activity */
         startingBillAmount = (EditText)findViewById(R.id.starting_bill_input);
-        tipPercent = (SeekBar)findViewById(R.id.tip_percent_slider);
+        tipPercentSlider = (SeekBar)findViewById(R.id.tip_percent_slider);
         final TextView tipPercentDisplay = (TextView)findViewById(R.id.tip_percent_text_view);
-        partySize = (SeekBar)findViewById(R.id.party_size_slider);
+        partySizeSlider = (SeekBar)findViewById(R.id.party_size_slider);
         final TextView partySizeDisplay = (TextView)findViewById(R.id.party_text_view);
 
-        tipPercent.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        /* Set OnSeekBarChangeListener to change the value of the tip % when the slider is used */
+        tipPercentSlider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                tip = valueOf(progress);
+                /* set value of tip % = current value on the seekbar + display it in the TextView*/
+                tipPercent = valueOf(progress);
                 tipPercentDisplay.setText(String.valueOf(progress));
             }
-
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-
             }
-
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-
             }
         });
-
-        partySize.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        /* Set OnSeekBarChangeListener to change the value of the party size when the slider is used */
+        partySizeSlider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                party = valueOf(progress);
+                /* set value of party size = current value on the seekbar + display it in the TextView*/
+                partySize = valueOf(progress);
                 partySizeDisplay.setText(String.valueOf(progress));
             }
-
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-
             }
-
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-
             }
         });
     }
@@ -77,22 +77,22 @@ public class MainActivity extends AppCompatActivity {
     //increase tip by 1% and display new amount to screen
     public void incrementTip(View view) {
         //user cant have more than 100 coffees
-        tip = tip + 1;
-        displayTip(tip);
-        displayFinalBill(tip,party);
-        displayOverallFinalBill(tip,party);
+        tipPercent = tipPercent + 1;
+        displayTip(tipPercent);
+        displayFinalBill(tipPercent,partySize);
+        displayOverallFinalBill(tipPercent,partySize);
     }
     //decrease tip by 1% and display new amount to screen
     public void decrementTip(View view) {
         //user can't tip less than 1%
-        if (tip == 1) {
-            Toast.makeText(this, "You cannot tip less than 1%!", Toast.LENGTH_SHORT).show();
+        if (tipPercent == 1) {Toast.makeText(this, "You cannot tip less than 1%!",
+                Toast.LENGTH_SHORT).show();
             return;
         }
-        tip = tip - 1;
-        displayTip(tip);
-        displayFinalBill(tip,party);
-        displayOverallFinalBill(tip,party);
+        tipPercent = tipPercent - 1;
+        displayTip(tipPercent);
+        displayFinalBill(tipPercent,partySize);
+        displayOverallFinalBill(tipPercent,partySize);
     }
     /**displays the given tip % value on the screen when buttons are pressed*/
     private void displayTip(float number) {
@@ -103,21 +103,21 @@ public class MainActivity extends AppCompatActivity {
     //increase size of party by 1 and display new amount to screen
     public void incrementParty(View view) {
         //user cant have more than 100 coffees
-        party = party + 1;
-        displayParty(party);
-        displayFinalBill(tip,party);
-        displayOverallFinalBill(tip,party);
+        partySize = partySize + 1;
+        displayParty(partySize);
+        displayFinalBill(tipPercent,partySize);
+        displayOverallFinalBill(tipPercent,partySize);
     }
     //decrease size of party by 1 and display new amount to screen
     public void decrementParty(View view) {
-        if (party == 1) {
+        if (partySize == 1) {
             Toast.makeText(this, "Your party cannot have less than 1 person!", Toast.LENGTH_SHORT).show();
             return;
         }
-        party = party - 1;
-        displayParty(party);
-        displayFinalBill(tip,party);
-        displayOverallFinalBill(tip,party);
+        partySize = partySize - 1;
+        displayParty(partySize);
+        displayFinalBill(tipPercent,partySize);
+        displayOverallFinalBill(tipPercent,partySize);
 //        calculateFinalTotal(bill,tip,party);
     }
     /**displays value of party size on the screen when buttons are pressed*/

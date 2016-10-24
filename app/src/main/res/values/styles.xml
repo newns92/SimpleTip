@@ -2,10 +2,15 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+        <!-- Customized theme here with green and gray-->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimaryLight">@color/colorPrimaryLight</item>
+        <item name="colorText_Icons">@color/colorText_Icons</item>
+        <item name="colorPrimaryText">@color/colorPrimaryText</item>
+        <item name="colorSecondaryText">@color/colorSecondaryText</item>
+        <item name="colorDivide">@color/colorPrimaryDark</item>
     </style>
 
 </resources>
