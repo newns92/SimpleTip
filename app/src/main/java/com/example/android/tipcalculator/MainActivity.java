@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
 *********************************************************/
 
     private EditText startingBillAmount;
-    private float tipPercent = 15;
+    private int tipPercent = 15;
     private int partySize = 1;
     private SeekBar tipPercentSlider;
     private TextView tipPercentDisplay;
@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     private SeekBar partySizeSlider;
     private float finalBillAmount;
     private float totalPerPerson;
+    private TextView overall_total_bill_text_view;
+    private TextView total_per_person_text_view;
 
 /********************************************************
 ********************************************************/
@@ -51,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 displayOverallFinalBill(tipPercent,partySize);
-                displayFinalBill(tipPercent,partySize);
+//                displayFinalBill(tipPercent,partySize);
             }
 
             @Override
@@ -68,8 +70,8 @@ public class MainActivity extends AppCompatActivity {
                 tipPercent = valueOf(progress);
                 tipPercentDisplay.setText(String.valueOf(progress)+"%");
                 //displayTip(tipPercent);
-                displayFinalBill(tipPercent,partySize);
-                displayOverallFinalBill(tipPercent,partySize);
+//                displayFinalBill(tipPercent,partySize);
+//                displayOverallFinalBill(tipPercent,partySize);
             }
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -85,8 +87,8 @@ public class MainActivity extends AppCompatActivity {
                 /* set value of party size = current value on the seekbar + display it in the TextView*/
                 partySize = valueOf(progress);
                 partySizeDisplay.setText(String.valueOf(progress));
-                displayFinalBill(tipPercent,partySize);
-                displayOverallFinalBill(tipPercent,partySize);
+//                displayFinalBill(tipPercent,partySize);
+//                displayOverallFinalBill(tipPercent,partySize);
             }
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -98,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**displays the given tip % value on the screen when buttons are pressed*/
-    private void displayTip(float number) {
+    private void displayTip(int number) {
         //TextView tipPercentTextView = (TextView) findViewById(R.id.tip_percent_text_view);
         tipPercentDisplay.setText("" + String.valueOf(number) + "%");
     }
@@ -109,21 +111,43 @@ public class MainActivity extends AppCompatActivity {
         partyTextView.setText("" + String.valueOf(number));
     }
 
-    private void displayOverallFinalBill(float tip, int party) {
-        TextView totalBillTextView = (TextView) findViewById(R.id.overall_total_bill_text_view);
-        EditText billInput = (EditText) findViewById(R.id.starting_bill_input);
-        String tempBill = billInput.getText().toString();
-        float bill = Float.parseFloat(tempBill);
-        float finalBill = (bill + (bill * (tip/100)));
-        totalBillTextView.setText("$" + finalBill);
-    }
+    private void displayOverallFinalBill(int tip, int party) {
+//        TextView totalBillTextView = (TextView) findViewById(overall_total_bill_text_view);
+//        EditText billInput = (EditText) findViewById(R.id.starting_bill_input);
+//        String tempBill = billInput.getText().toString();
+//        float bill = Float.parseFloat(tempBill);
+//        float finalBill = (bill + (bill * (tip/100)));
+//        totalBillTextView.setText("$" + finalBill);
 
-    private void displayFinalBill(float tip, int party) {
-        TextView totalBillTextView = (TextView) findViewById(R.id.total_bill_text_view);
-        EditText billInput = (EditText) findViewById(R.id.starting_bill_input);
-        String tempBill = billInput.getText().toString();
-        float bill = Float.parseFloat(tempBill);
-        float finalBill = ((bill + (bill * (tip/100)))/party);
-        totalBillTextView.setText("$" + finalBill);
+        double totalBillInput = Double.parseDouble(startingBillAmount.getText().toString());
+//                float finalBill = ((totalBillInput + (totalBillInput * (tipPercent/100)))/party);
+//                double percentageOfTip = (totalBillInput + (totalBillInput * (tipPercent/100)));
+        double totalAmountForTheBill = (totalBillInput + (totalBillInput * (tipPercent/100)));
+        double tipPerEachPerson = ((totalBillInput + (totalBillInput * (tipPercent/100)))/partySize);
+        overall_total_bill_text_view.setText(removeTrailingZero(String.valueOf(String.format("%.2f", totalAmountForTheBill))));
+        //totalAmountOfTipsToBePaid.setText(removeTrailingZero(String.valueOf(String.format("%.2f", percentageOfTip))));
+        total_per_person_text_view.setText(removeTrailingZero(String.valueOf(String.format("%.2f", tipPerEachPerson))));
+
+    }
+//
+//    private void displayFinalBill(float tip, int party) {
+//        TextView totalBillTextView = (TextView) findViewById(total_per_person_text_view);
+//        EditText billInput = (EditText) findViewById(R.id.starting_bill_input);
+//        String tempBill = billInput.getText().toString();
+//        float bill = Float.parseFloat(tempBill);
+//        float finalBill = ((bill + (bill * (tip/100)))/party);
+//        totalBillTextView.setText("$" + finalBill);
+//    }
+
+    public String removeTrailingZero(String formattingInput) {
+        if (!formattingInput.contains(".")) {
+            return formattingInput;
+        }
+        int dotPosition = formattingInput.indexOf(".");
+        String newValue = formattingInput.substring(dotPosition, formattingInput.length());
+        if (newValue.startsWith(".0")) {
+            return formattingInput.substring(0, dotPosition);
+        }
+        return formattingInput;
     }
 }
