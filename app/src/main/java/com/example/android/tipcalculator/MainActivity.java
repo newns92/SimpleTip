@@ -49,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
                 /* set value of tip % = current value on the seekbar + display it in the TextView*/
                 tipPercent = valueOf(progress);
                 tipPercentDisplay.setText(String.valueOf(progress));
+                //displayTip(tipPercent);
+                displayFinalBill(tipPercent,partySize);
+                displayOverallFinalBill(tipPercent,partySize);
             }
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -64,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
                 /* set value of party size = current value on the seekbar + display it in the TextView*/
                 partySize = valueOf(progress);
                 partySizeDisplay.setText(String.valueOf(progress));
+                displayFinalBill(tipPercent,partySize);
+                displayOverallFinalBill(tipPercent,partySize);
             }
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -76,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
 
     //increase tip by 1% and display new amount to screen
     public void incrementTip(View view) {
-        //user cant have more than 100 coffees
         tipPercent = tipPercent + 1;
         displayTip(tipPercent);
         displayFinalBill(tipPercent,partySize);
@@ -97,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
     /**displays the given tip % value on the screen when buttons are pressed*/
     private void displayTip(float number) {
         //TextView tipPercentTextView = (TextView) findViewById(R.id.tip_percent_text_view);
-        tipPercentDisplay.setText("" + number + "%");
+        tipPercentDisplay.setText("" + String.valueOf(number) + "%");
     }
 
     //increase size of party by 1 and display new amount to screen
@@ -123,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
     /**displays value of party size on the screen when buttons are pressed*/
     private void displayParty(int number) {
         TextView partyTextView = (TextView) findViewById(R.id.party_text_view);
-        partyTextView.setText("" + number);
+        partyTextView.setText("" + String.valueOf(number));
     }
 
     private void displayOverallFinalBill(float tip, int party) {

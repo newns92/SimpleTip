@@ -3,14 +3,14 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customized theme here with green and gray-->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="colorPrimaryLight">@color/colorPrimaryLight</item>
-        <item name="colorText_Icons">@color/colorText_Icons</item>
-        <item name="colorPrimaryText">@color/colorPrimaryText</item>
-        <item name="colorSecondaryText">@color/colorSecondaryText</item>
-        <item name="colorDivide">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">@color/primary_color</item>
+        <item name="colorPrimaryDark">@color/primary_dark_color</item>
+        <item name="colorAccent">@color/accent_color</item>
+        <!--<item name="colorPrimaryLight">@color/primary_light_color</item>-->
+        <!--<item name="colorText_Icons">@color/text_icons_color</item>-->
+        <!--<item name="colorPrimaryText">@color/primary_text_color</item>-->
+        <!--<item name="colorSecondaryText">@color/secondary_text_color</item>-->
+        <!--<item name="colorDivide">@color/divide_color</item>-->
     </style>
 
 </resources>
