@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         final TextView tipPercentDisplay = (TextView)findViewById(R.id.tip_percent_text_view);
         partySizeSlider = (SeekBar)findViewById(R.id.party_size_slider);
         final TextView partySizeDisplay = (TextView)findViewById(R.id.party_size_text_view);
+//        final TextView overallFinalBill = (TextView)findViewById(R.id.overall_total_bill_text_view);
 
         /* Dynamically display final bill overall + per person after user enters starting bill */
         startingBillAmount.addTextChangedListener(new TextWatcher() {
@@ -52,13 +53,14 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                displayOverallFinalBill(tipPercent,partySize);
-//                displayFinalBill(tipPercent,partySize);
+//                displayOverallFinalBill(tipPercent,partySize);
+                displayFinalBill(tipPercent,partySize);
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-
+//                displayOverallFinalBill(tipPercent,partySize);
+                displayFinalBill(tipPercent,partySize);
             }
         });
 
@@ -68,10 +70,9 @@ public class MainActivity extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 /* set value of tip % = current value on the seekbar + display it in the TextView*/
                 tipPercent = valueOf(progress);
-                tipPercentDisplay.setText(String.valueOf(progress)+"%");
-                //displayTip(tipPercent);
-//                displayFinalBill(tipPercent,partySize);
+                tipPercentDisplay.setText(String.valueOf(progress)+" %");
 //                displayOverallFinalBill(tipPercent,partySize);
+                displayFinalBill(tipPercent,partySize);
             }
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -87,8 +88,9 @@ public class MainActivity extends AppCompatActivity {
                 /* set value of party size = current value on the seekbar + display it in the TextView*/
                 partySize = valueOf(progress);
                 partySizeDisplay.setText(String.valueOf(progress));
-//                displayFinalBill(tipPercent,partySize);
 //                displayOverallFinalBill(tipPercent,partySize);
+                displayFinalBill(tipPercent,partySize);
+
             }
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -99,55 +101,15 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    /**displays the given tip % value on the screen when buttons are pressed*/
-    private void displayTip(int number) {
-        //TextView tipPercentTextView = (TextView) findViewById(R.id.tip_percent_text_view);
-        tipPercentDisplay.setText("" + String.valueOf(number) + "%");
-    }
+    private void displayFinalBill(float tip, int party) {
+        TextView totalBillPerPerson = (TextView) findViewById(R.id.total_per_person_text_view);
+        double billPerPerson = Double.parseDouble(startingBillAmount.getText().toString());
+        double finalBillPerPerson = ((billPerPerson + (billPerPerson * (tip/100)))/party);
+        totalBillPerPerson.setText("$" + (String.valueOf(String.format("%.2f", finalBillPerPerson))));
 
-    /**displays value of party size on the screen when buttons are pressed*/
-    private void displayParty(int number) {
-        TextView partyTextView = (TextView) findViewById(R.id.party_size_text_view);
-        partyTextView.setText("" + String.valueOf(number));
-    }
-
-    private void displayOverallFinalBill(int tip, int party) {
-//        TextView totalBillTextView = (TextView) findViewById(overall_total_bill_text_view);
-//        EditText billInput = (EditText) findViewById(R.id.starting_bill_input);
-//        String tempBill = billInput.getText().toString();
-//        float bill = Float.parseFloat(tempBill);
-//        float finalBill = (bill + (bill * (tip/100)));
-//        totalBillTextView.setText("$" + finalBill);
-
-        double totalBillInput = Double.parseDouble(startingBillAmount.getText().toString());
-//                float finalBill = ((totalBillInput + (totalBillInput * (tipPercent/100)))/party);
-//                double percentageOfTip = (totalBillInput + (totalBillInput * (tipPercent/100)));
-        double totalAmountForTheBill = (totalBillInput + (totalBillInput * (tipPercent/100)));
-        double tipPerEachPerson = ((totalBillInput + (totalBillInput * (tipPercent/100)))/partySize);
-        overall_total_bill_text_view.setText(removeTrailingZero(String.valueOf(String.format("%.2f", totalAmountForTheBill))));
-        //totalAmountOfTipsToBePaid.setText(removeTrailingZero(String.valueOf(String.format("%.2f", percentageOfTip))));
-        total_per_person_text_view.setText(removeTrailingZero(String.valueOf(String.format("%.2f", tipPerEachPerson))));
-
-    }
-//
-//    private void displayFinalBill(float tip, int party) {
-//        TextView totalBillTextView = (TextView) findViewById(total_per_person_text_view);
-//        EditText billInput = (EditText) findViewById(R.id.starting_bill_input);
-//        String tempBill = billInput.getText().toString();
-//        float bill = Float.parseFloat(tempBill);
-//        float finalBill = ((bill + (bill * (tip/100)))/party);
-//        totalBillTextView.setText("$" + finalBill);
-//    }
-
-    public String removeTrailingZero(String formattingInput) {
-        if (!formattingInput.contains(".")) {
-            return formattingInput;
-        }
-        int dotPosition = formattingInput.indexOf(".");
-        String newValue = formattingInput.substring(dotPosition, formattingInput.length());
-        if (newValue.startsWith(".0")) {
-            return formattingInput.substring(0, dotPosition);
-        }
-        return formattingInput;
+        TextView totalBillOverall = (TextView) findViewById(R.id.overall_total_bill_text_view);
+        double tempBill = Double.parseDouble(startingBillAmount.getText().toString());
+        double finalBill = (tempBill + (tempBill * (tip/100)));
+        totalBillOverall.setText("$" + (String.valueOf(String.format("%.2f", finalBill))));
     }
 }
