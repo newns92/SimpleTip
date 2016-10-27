@@ -7,6 +7,7 @@ import android.text.TextWatcher;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import static java.lang.Integer.valueOf;
 
@@ -18,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText startingBillAmount;
     private int tipPercent = 15;
-    private int partySize = 1;
+    private int partySize = 2;
     private SeekBar tipPercentSlider;
     private TextView tipPercentDisplay;
     private TextView partySizeDisplay;
@@ -45,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
         final TextView partySizeDisplay = (TextView)findViewById(R.id.party_size_text_view);
 //        final TextView overallFinalBill = (TextView)findViewById(R.id.overall_total_bill_text_view);
 
+        //tipPercentSlider.setProgress(tipPercentSlider.getMax()/2);
+
         /* Dynamically display final bill overall + per person after user enters starting bill */
         startingBillAmount.addTextChangedListener(new TextWatcher() {
             @Override
@@ -70,9 +73,16 @@ public class MainActivity extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 /* set value of tip % = current value on the seekbar + display it in the TextView*/
                 tipPercent = valueOf(progress);
-                tipPercentDisplay.setText(String.valueOf(progress)+" %");
-//                displayOverallFinalBill(tipPercent,partySize);
-                displayFinalBill(tipPercent,partySize);
+
+                if (tipPercent < 1) {
+                    Toast.makeText(MainActivity.this, "Tip percent can't be less than 1%!",
+                            Toast.LENGTH_SHORT).show();
+                    tipPercent = 1;
+                    tipPercentDisplay.setText(String.valueOf(tipPercent)+" %");
+                } else {
+                    tipPercentDisplay.setText(String.valueOf(tipPercent) + " %");
+                    displayFinalBill(tipPercent, partySize);
+                }
             }
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -87,10 +97,16 @@ public class MainActivity extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 /* set value of party size = current value on the seekbar + display it in the TextView*/
                 partySize = valueOf(progress);
-                partySizeDisplay.setText(String.valueOf(progress));
-//                displayOverallFinalBill(tipPercent,partySize);
-                displayFinalBill(tipPercent,partySize);
 
+                if (partySize < 1) {
+                    Toast.makeText(MainActivity.this, "You can't have less than 1 person!",
+                            Toast.LENGTH_SHORT).show();
+                    partySize = 1;
+                    partySizeDisplay.setText(String.valueOf(partySize));
+                } else {
+                    partySizeDisplay.setText(String.valueOf(partySize));
+                    displayFinalBill(tipPercent, partySize);
+                }
             }
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
