@@ -46,8 +46,6 @@ public class MainActivity extends AppCompatActivity {
         final TextView partySizeDisplay = (TextView)findViewById(R.id.party_size_text_view);
 //        final TextView overallFinalBill = (TextView)findViewById(R.id.overall_total_bill_text_view);
 
-        //tipPercentSlider.setProgress(tipPercentSlider.getMax()/2);
-
         /* Dynamically display final bill overall + per person after user enters starting bill */
         startingBillAmount.addTextChangedListener(new TextWatcher() {
             @Override
@@ -56,13 +54,12 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-//                displayOverallFinalBill(tipPercent,partySize);
                 displayFinalBill(tipPercent,partySize);
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-//                displayOverallFinalBill(tipPercent,partySize);
+//                startingBillAmount.setText("$" + s);
                 displayFinalBill(tipPercent,partySize);
             }
         });
@@ -121,11 +118,11 @@ public class MainActivity extends AppCompatActivity {
         TextView totalBillPerPerson = (TextView) findViewById(R.id.total_per_person_text_view);
         double billPerPerson = Double.parseDouble(startingBillAmount.getText().toString());
         double finalBillPerPerson = ((billPerPerson + (billPerPerson * (tip/100)))/party);
-        totalBillPerPerson.setText("$" + (String.valueOf(String.format("%.2f", finalBillPerPerson))));
+        totalBillPerPerson.setText("$ " + (String.valueOf(String.format("%.2f", finalBillPerPerson))));
 
         TextView totalBillOverall = (TextView) findViewById(R.id.overall_total_bill_text_view);
         double tempBill = Double.parseDouble(startingBillAmount.getText().toString());
         double finalBill = (tempBill + (tempBill * (tip/100)));
-        totalBillOverall.setText("$" + (String.valueOf(String.format("%.2f", finalBill))));
+        totalBillOverall.setText("$ " + (String.valueOf(String.format("%.2f", finalBill))));
     }
 }

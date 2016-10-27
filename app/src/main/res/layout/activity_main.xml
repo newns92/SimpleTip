@@ -31,23 +31,28 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_weight="1"-->
-            <!--android:text="$"-->
-            <!--android:textSize="20dp"-->
-            <!--android:gravity="right"/>-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="$"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:gravity="right"
+                android:layout_marginRight="4dp"/>
 
             <EditText
                 android:id="@+id/starting_bill_input"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:hint="$0.00"
+                android:gravity="left"
+                android:hint="0.00"
+                android:textColorHint="@android:color/black"
                 android:inputType="numberDecimal"
-                android:textSize="20dp" />
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                android:background="@android:color/transparent"/>
 
         </LinearLayout>
 
@@ -79,7 +84,7 @@
                 android:gravity="center_horizontal"
                 android:text="Tip"
                 android:textAlignment="gravity"
-                android:textSize="16dp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tip_percent_text_view"
@@ -91,7 +96,7 @@
                 android:text="15%"
                 android:textAlignment="gravity"
                 android:textColor="@android:color/black"
-                android:textSize="16dp" />
+                android:textSize="16sp" />
 
         </LinearLayout>
 
@@ -131,7 +136,7 @@
                 android:gravity="center_horizontal"
                 android:text="Party"
                 android:textAlignment="gravity"
-                android:textSize="16dp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/party_size_text_view"
@@ -143,7 +148,7 @@
                 android:text="2"
                 android:textAlignment="gravity"
                 android:textColor="@android:color/black"
-                android:textSize="16dp" />
+                android:textSize="16sp" />
 
         </LinearLayout>
 
@@ -186,9 +191,9 @@
                     android:gravity="center"
                     android:paddingBottom="16dp"
                     android:paddingTop="8dp"
-                    android:text="$0.00"
+                    android:text="$ 0.00"
                     android:textAlignment="gravity"
-                    android:textColor="@android:color/darker_gray"
+                    android:textColor="@android:color/black"
                     android:textSize="20sp" />
 
             </LinearLayout>
@@ -220,9 +225,9 @@
                     android:gravity="center"
                     android:paddingBottom="16dp"
                     android:paddingTop="8dp"
-                    android:text="$0.00"
+                    android:text="$ 0.00"
                     android:textAlignment="gravity"
-                    android:textColor="@android:color/darker_gray"
+                    android:textColor="@android:color/black"
                     android:textSize="20sp" />
 
             </LinearLayout>
