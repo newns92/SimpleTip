@@ -54,13 +54,17 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                displayFinalBill(tipPercent,partySize);
+                /* sets bill amount to $0 when user clears the EditText (Fixes crashing bug) */
+                if (s.length() == 0) {
+                    startingBillAmount.setText("0.00");
+                } else {
+                    displayFinalBill(tipPercent,partySize);
+                }
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-//                startingBillAmount.setText("$" + s);
-                displayFinalBill(tipPercent,partySize);
+//                displayFinalBill(tipPercent,partySize);
             }
         });
 
@@ -70,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 /* set value of tip % = current value on the seekbar + display it in the TextView*/
                 tipPercent = valueOf(progress);
-
+                /* If the user attempts to make tip percent < 1, give error message */
                 if (tipPercent < 1) {
                     Toast.makeText(MainActivity.this, "Tip percent can't be less than 1%!",
                             Toast.LENGTH_SHORT).show();
@@ -88,13 +92,14 @@ public class MainActivity extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar seekBar) {
             }
         });
+
         /* Set OnSeekBarChangeListener to change the value of the party size when the slider is used */
         partySizeSlider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 /* set value of party size = current value on the seekbar + display it in the TextView*/
                 partySize = valueOf(progress);
-
+                /* If the user attempts to make party size < 1, give error message */
                 if (partySize < 1) {
                     Toast.makeText(MainActivity.this, "You can't have less than 1 person!",
                             Toast.LENGTH_SHORT).show();
@@ -115,14 +120,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void displayFinalBill(float tip, int party) {
-        TextView totalBillPerPerson = (TextView) findViewById(R.id.total_per_person_text_view);
-        double billPerPerson = Double.parseDouble(startingBillAmount.getText().toString());
-        double finalBillPerPerson = ((billPerPerson + (billPerPerson * (tip/100)))/party);
-        totalBillPerPerson.setText("$ " + (String.valueOf(String.format("%.2f", finalBillPerPerson))));
 
         TextView totalBillOverall = (TextView) findViewById(R.id.overall_total_bill_text_view);
         double tempBill = Double.parseDouble(startingBillAmount.getText().toString());
         double finalBill = (tempBill + (tempBill * (tip/100)));
         totalBillOverall.setText("$ " + (String.valueOf(String.format("%.2f", finalBill))));
+
+        TextView totalBillPerPerson = (TextView) findViewById(R.id.total_per_person_text_view);
+        double billPerPerson = Double.parseDouble(startingBillAmount.getText().toString());
+        double finalBillPerPerson = ((billPerPerson + (billPerPerson * (tip/100)))/party);
+        totalBillPerPerson.setText("$ " + (String.valueOf(String.format("%.2f", finalBillPerPerson))));
+
     }
 }
