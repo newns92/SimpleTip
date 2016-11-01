@@ -24,8 +24,10 @@ public class MainActivity extends AppCompatActivity {
     private TextView tipPercentDisplay;
     private TextView partySizeDisplay;
     private SeekBar partySizeSlider;
-    private float finalBillAmount;
-    private float totalPerPerson;
+    private double tempFinalBillAmount;
+    private double finalBillAmount;
+    private double tempTotalPerPerson;
+    private double totalPerPerson;
     private TextView overall_total_bill_text_view;
     private TextView total_per_person_text_view;
 
@@ -41,12 +43,13 @@ public class MainActivity extends AppCompatActivity {
         /* Find the Views w/in main activity */
         startingBillAmount = (EditText)findViewById(R.id.starting_bill_input);
         tipPercentSlider = (SeekBar)findViewById(R.id.tip_percent_slider);
-        final TextView tipPercentDisplay = (TextView)findViewById(R.id.tip_percent_text_view);
+        tipPercentDisplay = (TextView)findViewById(R.id.tip_percent_text_view);
         partySizeSlider = (SeekBar)findViewById(R.id.party_size_slider);
-        final TextView partySizeDisplay = (TextView)findViewById(R.id.party_size_text_view);
-//        final TextView overallFinalBill = (TextView)findViewById(R.id.overall_total_bill_text_view);
+        partySizeDisplay = (TextView)findViewById(R.id.party_size_text_view);
+        overall_total_bill_text_view = (TextView)findViewById(R.id.overall_total_bill_text_view);
+        total_per_person_text_view = (TextView)findViewById(R.id.total_per_person_text_view);
 
-        /* Dynamically display final bill overall + per person after user enters starting bill */
+        /* Dynamically display final bill overall + bill per person after user enters starting bill */
         startingBillAmount.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -54,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                /* sets bill amount to $0 when user clears the EditText (Fixes crashing bug) */
+                /* set bill amount to $0 when user clears the EditText (Fixes crashing bug) */
                 if (s.length() == 0) {
                     startingBillAmount.setText("0.00");
                 } else {
@@ -64,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-//                displayFinalBill(tipPercent,partySize);
             }
         });
 
@@ -121,15 +123,15 @@ public class MainActivity extends AppCompatActivity {
 
     private void displayFinalBill(float tip, int party) {
 
-        TextView totalBillOverall = (TextView) findViewById(R.id.overall_total_bill_text_view);
-        double tempBill = Double.parseDouble(startingBillAmount.getText().toString());
-        double finalBill = (tempBill + (tempBill * (tip/100)));
-        totalBillOverall.setText("$ " + (String.valueOf(String.format("%.2f", finalBill))));
+        tempFinalBillAmount = Double.parseDouble(startingBillAmount.getText().toString());
+        finalBillAmount = (tempFinalBillAmount + (tempFinalBillAmount * (tip/100)));
+        overall_total_bill_text_view.setText("$ " + (String.valueOf(String.format("%.2f",
+                finalBillAmount))));
 
-        TextView totalBillPerPerson = (TextView) findViewById(R.id.total_per_person_text_view);
-        double billPerPerson = Double.parseDouble(startingBillAmount.getText().toString());
-        double finalBillPerPerson = ((billPerPerson + (billPerPerson * (tip/100)))/party);
-        totalBillPerPerson.setText("$ " + (String.valueOf(String.format("%.2f", finalBillPerPerson))));
+        tempTotalPerPerson = Double.parseDouble(startingBillAmount.getText().toString());
+        totalPerPerson = ((tempTotalPerPerson + (tempTotalPerPerson * (tip/100)))/party);
+        total_per_person_text_view.setText("$ " + (String.valueOf(String.format("%.2f",
+                totalPerPerson))));
 
     }
 }

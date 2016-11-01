@@ -15,13 +15,13 @@
         android:paddingRight="@dimen/activity_horizontal_margin">
 
         <TextView
-            android:id="@+id/header_text_view"
+            android:id="@+id/starting_bill_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:paddingBottom="16dp"
             android:paddingTop="24dp"
-            android:text="Bill Total"
+            android:text="@string/starting_bill_header_text"
             android:textAlignment="gravity"
             android:textColor="@android:color/black"
             android:textSize="20sp" />
@@ -35,7 +35,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="$"
+                android:text="@string/dollar_notation"
                 android:textColor="@android:color/black"
                 android:textSize="20sp"
                 android:gravity="right"
@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="left"
-                android:hint="0.00"
+                android:hint="@string/starting_bill_hint"
                 android:textColorHint="@android:color/black"
                 android:inputType="numberDecimal"
                 android:textSize="20sp"
@@ -63,7 +63,7 @@
             android:gravity="center"
             android:paddingBottom="16dp"
             android:paddingTop="24dp"
-            android:text="How was the service?"
+            android:text="@string/tip_header_text"
             android:textAlignment="gravity"
             android:textColor="@android:color/black"
             android:textSize="20sp" />
@@ -82,7 +82,7 @@
                 android:layout_marginLeft="120dp"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
-                android:text="Tip"
+                android:text="@string/tip_indicator_text"
                 android:textAlignment="gravity"
                 android:textSize="16sp" />
 
@@ -93,7 +93,7 @@
                 android:layout_marginRight="120dp"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
-                android:text="15%"
+                android:text="@string/init_tip_percentage"
                 android:textAlignment="gravity"
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />
@@ -114,7 +114,7 @@
             android:gravity="center"
             android:paddingBottom="16dp"
             android:paddingTop="24dp"
-            android:text="Splitting the check?"
+            android:text="@string/party_header_text"
             android:textAlignment="gravity"
             android:textColor="@android:color/black"
             android:textSize="20sp" />
@@ -134,7 +134,7 @@
                 android:layout_marginLeft="120dp"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
-                android:text="Party"
+                android:text="@string/party_indicator_text"
                 android:textAlignment="gravity"
                 android:textSize="16sp" />
 
@@ -145,7 +145,7 @@
                 android:layout_marginRight="120dp"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
-                android:text="2"
+                android:text="@string/init_party_size"
                 android:textAlignment="gravity"
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />
@@ -179,7 +179,7 @@
                     android:gravity="center"
                     android:paddingBottom="16dp"
                     android:paddingTop="16dp"
-                    android:text="Overall Total:"
+                    android:text="@string/overall_bill_header_text"
                     android:textAlignment="gravity"
                     android:textColor="@android:color/black"
                     android:textSize="20sp" />
@@ -191,7 +191,7 @@
                     android:gravity="center"
                     android:paddingBottom="16dp"
                     android:paddingTop="8dp"
-                    android:text="$ 0.00"
+                    android:text="@string/init_final_bill"
                     android:textAlignment="gravity"
                     android:textColor="@android:color/black"
                     android:textSize="20sp" />
@@ -212,7 +212,7 @@
                     android:gravity="center"
                     android:paddingBottom="16dp"
                     android:paddingTop="16dp"
-                    android:text="Total Per Person:"
+                    android:text="@string/per_person_bill_header_text"
                     android:textAlignment="gravity"
                     android:textColor="@android:color/black"
                     android:textSize="20sp" />
@@ -224,7 +224,7 @@
                     android:gravity="center"
                     android:paddingBottom="16dp"
                     android:paddingTop="8dp"
-                    android:text="$ 0.00"
+                    android:text="@string/init_final_bill"
                     android:textAlignment="gravity"
                     android:textColor="@android:color/black"
                     android:textSize="20sp" />
