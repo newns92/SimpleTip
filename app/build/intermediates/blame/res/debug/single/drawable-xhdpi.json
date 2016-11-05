@@ -1,0 +1,30 @@
+[
+    {
+        "merged": "C:\\Users\\Steve\\Dropbox\\PersonalAndroidStudioProjects\\TipCalc\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\thumb_normal_holo.png",
+        "source": "C:\\Users\\Steve\\Dropbox\\PersonalAndroidStudioProjects\\TipCalc\\app\\src\\main\\res\\drawable-xhdpi\\thumb_normal_holo.png"
+    },
+    {
+        "merged": "C:\\Users\\Steve\\Dropbox\\PersonalAndroidStudioProjects\\TipCalc\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\thumb_progress_primary_holo.9.png",
+        "source": "C:\\Users\\Steve\\Dropbox\\PersonalAndroidStudioProjects\\TipCalc\\app\\src\\main\\res\\drawable-xhdpi\\thumb_progress_primary_holo.9.png"
+    },
+    {
+        "merged": "C:\\Users\\Steve\\Dropbox\\PersonalAndroidStudioProjects\\TipCalc\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\thumb_disabled_holo.png",
+        "source": "C:\\Users\\Steve\\Dropbox\\PersonalAndroidStudioProjects\\TipCalc\\app\\src\\main\\res\\drawable-xhdpi\\thumb_disabled_holo.png"
+    },
+    {
+        "merged": "C:\\Users\\Steve\\Dropbox\\PersonalAndroidStudioProjects\\TipCalc\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\thumb_progress_secondary_holo.9.png",
+        "source": "C:\\Users\\Steve\\Dropbox\\PersonalAndroidStudioProjects\\TipCalc\\app\\src\\main\\res\\drawable-xhdpi\\thumb_progress_secondary_holo.9.png"
+    },
+    {
+        "merged": "C:\\Users\\Steve\\Dropbox\\PersonalAndroidStudioProjects\\TipCalc\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\thumb_focused_holo.png",
+        "source": "C:\\Users\\Steve\\Dropbox\\PersonalAndroidStudioProjects\\TipCalc\\app\\src\\main\\res\\drawable-xhdpi\\thumb_focused_holo.png"
+    },
+    {
+        "merged": "C:\\Users\\Steve\\Dropbox\\PersonalAndroidStudioProjects\\TipCalc\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\thumb_progress_track_holo.png",
+        "source": "C:\\Users\\Steve\\Dropbox\\PersonalAndroidStudioProjects\\TipCalc\\app\\src\\main\\res\\drawable-xhdpi\\thumb_progress_track_holo.png"
+    },
+    {
+        "merged": "C:\\Users\\Steve\\Dropbox\\PersonalAndroidStudioProjects\\TipCalc\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\thumb_pressed_holo.png",
+        "source": "C:\\Users\\Steve\\Dropbox\\PersonalAndroidStudioProjects\\TipCalc\\app\\src\\main\\res\\drawable-xhdpi\\thumb_pressed_holo.png"
+    }
+]

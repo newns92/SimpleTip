@@ -13,4 +13,15 @@
         <!--<item name="colorDivide">@color/divide_color</item>-->
     </style>
 
+    <style name="SeekBarthumb" parent="android:Widget.SeekBar">
+        <item name="android:progressDrawable">@drawable/thumb_progress_horizontal_holo</item>
+        <item name="android:indeterminateDrawable">@drawable/thumb_progress_horizontal_holo</item>
+        <item name="android:minHeight">13dip</item>
+        <item name="android:maxHeight">13dip</item>
+        <item name="android:thumb">@drawable/thumb_holo_light</item>
+        <item name="android:thumbOffset">16dip</item>
+        <item name="android:paddingLeft">16dip</item>
+        <item name="android:paddingRight">16dip</item>
+    </style>
+
 </resources>

@@ -12,4 +12,5 @@
     <string name="init_party_size">1</string>
     <string name="overall_bill_header_text">Overall Total:</string>
     <string name="per_person_bill_header_text">Total Per Person:</string>
+    <string name="clear_button_text">Clear</string>
 </resources>

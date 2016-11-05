@@ -1,0 +1,7 @@
+#Sat Nov 05 08:39:04 EDT 2016
+base.0=C\:\\Users\\Steve\\Dropbox\\PersonalAndroidStudioProjects\\TipCalc\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_fb804adb8496ac8aafede893230d88662c8cf2fb
+renamed.1=classes2.dex
+renamed.0=classes.dex
+file.1=C\:\\Users\\Steve\\Dropbox\\PersonalAndroidStudioProjects\\TipCalc\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_4b9f657b0ebd1d05a6afa92ec4917799604344c5\\classes.dex
+base.1=C\:\\Users\\Steve\\Dropbox\\PersonalAndroidStudioProjects\\TipCalc\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_4b9f657b0ebd1d05a6afa92ec4917799604344c5
+file.0=C\:\\Users\\Steve\\Dropbox\\PersonalAndroidStudioProjects\\TipCalc\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_fb804adb8496ac8aafede893230d88662c8cf2fb\\classes.dex

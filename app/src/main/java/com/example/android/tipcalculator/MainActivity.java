@@ -61,6 +61,17 @@ public class MainActivity extends AppCompatActivity {
                 if (s.length() == 0) {
                     startingBillAmount.setText("0.00");
                 } else {
+//                    startingBillAmount.removeTextChangedListener(this);
+//
+//                    String cleanString = s.toString().replaceAll("[$,.]", "");
+//
+//                    double parsed = Double.parseDouble(cleanString);
+//                    String formatted = NumberFormat.getCurrencyInstance().format((parsed/100));
+//
+//                    startingBillAmount.setText(formatted);
+//                    startingBillAmount.setSelection(formatted.length());
+//
+//                    startingBillAmount.addTextChangedListener(this);
                     displayFinalBill(tipPercent,partySize);
                 }
             }
