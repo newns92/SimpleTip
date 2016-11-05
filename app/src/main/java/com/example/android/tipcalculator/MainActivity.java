@@ -18,8 +18,8 @@ public class MainActivity extends AppCompatActivity {
 *********************************************************/
 
     private EditText startingBillAmount;
-    private int tipPercent = 15;
-    private int partySize = 2;
+    public int tipPercent = 15;
+    public int partySize = 2;
     private SeekBar tipPercentSlider;
     private TextView tipPercentDisplay;
     private TextView partySizeDisplay;
@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         total_per_person_text_view = (TextView)findViewById(R.id.total_per_person_text_view);
 
         /* Dynamically display final bill overall + bill per person after user enters starting bill */
+        //startingBillAmount.addTextChangedListener(new CurrencyTextWa  tcher(startingBillAmount,"#,###"));
         startingBillAmount.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -132,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void displayFinalBill(float tip, int party) {
+    public void displayFinalBill(float tip, int party) {
 
         tempFinalBillAmount = Double.parseDouble(startingBillAmount.getText().toString());
         finalBillAmount = (tempFinalBillAmount + (tempFinalBillAmount * (tip/100)));
