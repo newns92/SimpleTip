@@ -5,26 +5,26 @@
     density="xxxhdpi"
     format="8"
     plugin-version="2.2.2"
-    timestamp="480134978695543"
+    timestamp="480449174420111"
     token="2887631133276315945"
-    verifier="FULL_BUILD_REQUESTED" >
+    verifier="COMPATIBLE" >
 
     <task
         name="javac"
-        duration="690" />
+        duration="0" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="750" />
+        duration="0" />
     <task
         name="verifier"
-        duration="195" />
+        duration="0" />
 
     <artifact
-        location="C:\Users\Steve\Dropbox\PersonalAndroidStudioProjects\TipCalc\app\build\outputs\apk\app-debug.apk"
-        type="MAIN" />
+        location="C:\Users\Steve\Dropbox\PersonalAndroidStudioProjects\TipCalc\app\build\intermediates\instant-run-resources\resources-debug.ir.ap_"
+        type="RESOURCES" />
 
     <build
         timestamp="480134978695543"
@@ -32,6 +32,13 @@
         <artifact
             location="C:\Users\Steve\Dropbox\PersonalAndroidStudioProjects\TipCalc\app\build\outputs\apk\app-debug.apk"
             type="MAIN" />
+    </build>
+    <build
+        timestamp="480449174420111"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="C:\Users\Steve\Dropbox\PersonalAndroidStudioProjects\TipCalc\app\build\intermediates\instant-run-resources\resources-debug.ir.ap_"
+            type="RESOURCES" />
     </build>
 
 </instant-run>

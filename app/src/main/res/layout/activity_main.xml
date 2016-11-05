@@ -100,12 +100,12 @@
 
         </LinearLayout>
 
+        <!--android:progressDrawable="@drawable/thumb_progress_horizontal_holo"-->
         <SeekBar
             android:id="@+id/tip_percent_slider"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:max="50"
-            android:progressDrawable="@drawable/thumb_progress_horizontal_holo"
             android:thumb="@drawable/thumb_holo_light"
             android:progress="15" />
 
@@ -154,12 +154,12 @@
 
         </LinearLayout>
 
+        <!--android:progressDrawable="@drawable/thumb_progress_horizontal_holo"-->
         <SeekBar
             android:id="@+id/party_size_slider"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:max="20"
-            android:progressDrawable="@drawable/thumb_progress_horizontal_holo"
             android:thumb="@drawable/thumb_holo_light"
             android:progress="2" />
 
