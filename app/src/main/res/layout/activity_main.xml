@@ -240,7 +240,8 @@
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="@string/clear_button_text"/>
+        android:text="@string/clear_button_text"
+        android:onClick="clearAll"/>
 
     </LinearLayout>
 

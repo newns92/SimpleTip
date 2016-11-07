@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -134,7 +135,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void displayFinalBill(float tip, int party) {
-
         tempFinalBillAmount = Double.parseDouble(startingBillAmount.getText().toString());
         finalBillAmount = (tempFinalBillAmount + (tempFinalBillAmount * (tip/100)));
         overall_total_bill_text_view.setText("$ " + (String.valueOf(String.format("%.2f",
@@ -144,6 +144,15 @@ public class MainActivity extends AppCompatActivity {
         totalPerPerson = ((tempTotalPerPerson + (tempTotalPerPerson * (tip/100)))/party);
         total_per_person_text_view.setText("$ " + (String.valueOf(String.format("%.2f",
                 totalPerPerson))));
+    }
 
+    /** This method resets initial state of the app*/
+    public void clearAll(View view) {
+        startingBillAmount.setText("");
+        tipPercentSlider.setProgress(15);
+        tipPercent = valueOf(tipPercentSlider.getProgress());
+        partySizeSlider.setProgress(2);
+        partySize = valueOf(partySizeSlider.getProgress());
+        displayFinalBill(tipPercent,partySize);
     }
 }

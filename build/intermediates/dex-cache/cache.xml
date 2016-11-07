@@ -16,7 +16,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.1"
-        sha1="d4680c2e360708e89b77373fb31b679e1264d7ce">
+        sha1="827e4436addcce80f6ffe7e61213602c171bd0ea">
         <dex dex="C:\Users\Steve\Dropbox\PersonalAndroidStudioProjects\TipCalc\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_fb804adb8496ac8aafede893230d88662c8cf2fb\classes.dex" />
     </item>
     <item
@@ -52,7 +52,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.1"
-        sha1="6a1b9a86aacfd52c0233daaa535efe2f0014dd47">
+        sha1="b3e118a34698362ce0d1458da2a57b3f3a447276">
         <dex dex="C:\Users\Steve\Dropbox\PersonalAndroidStudioProjects\TipCalc\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_4b9f657b0ebd1d05a6afa92ec4917799604344c5\classes.dex" />
     </item>
     <item
