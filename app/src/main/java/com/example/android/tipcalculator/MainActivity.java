@@ -23,8 +23,10 @@ public class MainActivity extends AppCompatActivity {
     public int partySize = 2;
     private SeekBar tipPercentSlider;
     private TextView tipPercentDisplay;
+    private TextView tipDollarAmountDisplay;
     private TextView partySizeDisplay;
     private SeekBar partySizeSlider;
+    private double tempPercentDollarAmount;
     private double tempFinalBillAmount;
     private double finalBillAmount;
     private double tempTotalPerPerson;
@@ -45,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         startingBillAmount = (EditText)findViewById(R.id.starting_bill_input);
         tipPercentSlider = (SeekBar)findViewById(R.id.tip_percent_slider);
         tipPercentDisplay = (TextView)findViewById(R.id.tip_percent_text_view);
+        tipDollarAmountDisplay = (TextView)findViewById(R.id.tip_dollar_amount_text_view);
         partySizeSlider = (SeekBar)findViewById(R.id.party_size_slider);
         partySizeDisplay = (TextView)findViewById(R.id.party_size_text_view);
         overall_total_bill_text_view = (TextView)findViewById(R.id.overall_total_bill_text_view);
@@ -94,9 +97,10 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Tip percent can't be less than 1%!",
                             Toast.LENGTH_SHORT).show();
                     tipPercent = 1;
-                    tipPercentDisplay.setText(String.valueOf(tipPercent)+" %");
+                    displayTipNumbers();
+                    displayFinalBill(tipPercent, partySize);
                 } else {
-                    tipPercentDisplay.setText(String.valueOf(tipPercent) + " %");
+                    displayTipNumbers();
                     displayFinalBill(tipPercent, partySize);
                 }
             }
@@ -144,6 +148,13 @@ public class MainActivity extends AppCompatActivity {
         totalPerPerson = ((tempTotalPerPerson + (tempTotalPerPerson * (tip/100)))/party);
         total_per_person_text_view.setText("$ " + (String.valueOf(String.format("%.2f",
                 totalPerPerson))));
+    }
+
+    public void displayTipNumbers() {
+        tipPercentDisplay.setText(String.valueOf(tipPercent)+" %");
+        tempPercentDollarAmount = Double.parseDouble(startingBillAmount.getText().toString());
+        tipDollarAmountDisplay.setText("($ " + (String.valueOf(String.format("%.2f",
+                (tempFinalBillAmount*(Double.valueOf(tipPercent)/100))) + ")")));
     }
 
     /** This method resets initial state of the app*/
