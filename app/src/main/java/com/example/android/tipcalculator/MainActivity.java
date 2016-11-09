@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        /* For icon display in app bar TO BE ADDED LATER */
 //        getSupportActionBar().setDisplayShowHomeEnabled(true);
 //        getSupportActionBar().setLogo(R.drawable.ic_launcher);
 //        getSupportActionBar().setDisplayUseLogoEnabled(true);

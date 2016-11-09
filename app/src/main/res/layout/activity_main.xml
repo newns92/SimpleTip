@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -20,10 +20,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:paddingBottom="16dp"
-            android:paddingTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
             android:text="@string/starting_bill_header_text"
-            android:textAlignment="gravity"
+            android:textAlignment="center"
             android:textColor="@android:color/black"
             android:textSize="20sp" />
 
@@ -63,8 +63,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:paddingBottom="8dp"
-            android:paddingTop="24dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="24dp"
             android:text="@string/tip_header_text"
             android:textAlignment="gravity"
             android:textColor="@android:color/black"
@@ -86,7 +86,7 @@
                 android:layout_marginLeft="50dp"
                 android:text="@string/tip_indicator_text"
                 android:textAlignment="gravity"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 android:layout_weight="1" />
 
             <TextView
@@ -98,7 +98,7 @@
                 android:text="@string/init_tip_percentage"
                 android:textAlignment="gravity"
                 android:textColor="@android:color/black"
-                android:textSize="16sp" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/tip_dollar_amount_text_view"
@@ -108,11 +108,10 @@
                 android:gravity="left"
                 android:text="($0.00)"
                 android:textAlignment="gravity"
-                android:textSize="16sp" />
+                android:textSize="18sp" />
 
         </LinearLayout>
 
-        <!--android:progressDrawable="@drawable/thumb_progress_horizontal_holo"-->
         <SeekBar
             android:id="@+id/tip_percent_slider"
             android:layout_width="match_parent"
@@ -125,9 +124,9 @@
             android:id="@+id/split_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:paddingBottom="8dp"
-            android:paddingTop="24dp"
+            android:gravity="center_horizontal"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="24dp"
             android:text="@string/party_header_text"
             android:textAlignment="gravity"
             android:textColor="@android:color/black"
@@ -146,24 +145,24 @@
                 android:id="@+id/party_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="120dp"
                 android:layout_weight="1"
-                android:gravity="center_horizontal"
+                android:gravity="right"
+
                 android:text="@string/party_indicator_text"
                 android:textAlignment="gravity"
-                android:textSize="16sp" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/party_size_text_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="120dp"
                 android:layout_weight="1"
-                android:gravity="center_horizontal"
+                android:gravity="left"
+                android:layout_marginLeft="8dp"
                 android:text="@string/init_party_size"
                 android:textAlignment="gravity"
                 android:textColor="@android:color/black"
-                android:textSize="16sp" />
+                android:textSize="18sp" />
 
         </LinearLayout>
 
@@ -194,9 +193,9 @@
                     android:id="@+id/overall_total_header_text_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:paddingBottom="16dp"
-                    android:paddingTop="16dp"
+                    android:gravity="center_horizontal"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="16dp"
                     android:text="@string/overall_bill_header_text"
                     android:textAlignment="gravity"
                     android:textColor="@android:color/black"
@@ -206,9 +205,9 @@
                     android:id="@+id/overall_total_bill_text_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:paddingBottom="16dp"
-                    android:paddingTop="8dp"
+                    android:gravity="center_horizontal"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="8dp"
                     android:text="@string/init_final_bill"
                     android:textAlignment="gravity"
                     android:textColor="@android:color/black"
@@ -226,11 +225,11 @@
 
                 <TextView
                     android:id="@+id/total_header_text_view"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:paddingBottom="16dp"
-                    android:paddingTop="16dp"
+                    android:gravity="center_horizontal"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="16dp"
                     android:text="@string/per_person_bill_header_text"
                     android:textAlignment="gravity"
                     android:textColor="@android:color/black"
@@ -240,9 +239,9 @@
                     android:id="@+id/total_per_person_text_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:paddingBottom="16dp"
-                    android:paddingTop="8dp"
+                    android:gravity="center_horizontal"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="8dp"
                     android:text="@string/init_final_bill"
                     android:textAlignment="gravity"
                     android:textColor="@android:color/black"
@@ -256,9 +255,10 @@
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="4dp"
         android:text="@string/clear_button_text"
         android:onClick="clearAll"/>
 
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>
