@@ -31,6 +31,10 @@ public class MainActivity extends AppCompatActivity {
     private double finalBillAmount;
     private double tempTotalPerPerson;
     private double totalPerPerson;
+    private String overall_total_bill_text;
+    private String total_per_person_text;
+    private String tipDollarAmount_text;
+    private String tipPercentText;
     private TextView overall_total_bill_text_view;
     private TextView total_per_person_text_view;
 
@@ -40,10 +44,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        /* For icon display in app bar TO BE ADDED LATER */
-//        getSupportActionBar().setDisplayShowHomeEnabled(true);
-//        getSupportActionBar().setLogo(R.drawable.ic_launcher);
-//        getSupportActionBar().setDisplayUseLogoEnabled(true);
         /* Inflate main activity XML layout */
         setContentView(R.layout.activity_main);
 
@@ -74,6 +74,12 @@ public class MainActivity extends AppCompatActivity {
             }
             @Override
             public void afterTextChanged(Editable s) {
+                if (s.length() == 0) {
+                    startingBillAmount.setText("0.00");
+                } else {
+                    displayTipNumbers();
+                    displayFinalBill(tipPercent,partySize);
+                }
             }
         });
 
@@ -169,22 +175,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void displayFinalBill(float tip, int party) {
-        tempFinalBillAmount = Double.parseDouble(startingBillAmount.getText().toString());
+        Math.round(tempFinalBillAmount = Double.parseDouble(startingBillAmount.getText().toString()));
         finalBillAmount = (tempFinalBillAmount + (tempFinalBillAmount * (tip/100)));
-        overall_total_bill_text_view.setText("$ " + (String.valueOf(String.format("%.2f",
-                finalBillAmount))));
+        overall_total_bill_text = (getString(R.string.dollar_notation) +
+                (String.valueOf(String.format("%.2f",finalBillAmount))));
+        overall_total_bill_text_view.setText(overall_total_bill_text);
 
-        tempTotalPerPerson = Double.parseDouble(startingBillAmount.getText().toString());
+        Math.round(tempTotalPerPerson = Double.parseDouble(startingBillAmount.getText().toString()));
         totalPerPerson = ((tempTotalPerPerson + (tempTotalPerPerson * (tip/100)))/party);
-        total_per_person_text_view.setText("$ " + (String.valueOf(String.format("%.2f",
-                totalPerPerson))));
+        total_per_person_text = (getString(R.string.dollar_notation) +
+                (String.valueOf(String.format("%.2f",totalPerPerson))));
+        total_per_person_text_view.setText(total_per_person_text);
     }
 
     public void displayTipNumbers() {
-        tipPercentDisplay.setText(String.valueOf(tipPercent)+" %");
-        tempPercentDollarAmount = Double.parseDouble(startingBillAmount.getText().toString());
-        tipDollarAmountDisplay.setText("($ " + (String.valueOf(String.format("%.2f",
-                (tempFinalBillAmount*(Double.valueOf(tipPercent)/100))) + ")")));
+        tipPercentText = String.valueOf(tipPercent) + getString(R.string.percentage)
+        tipPercentDisplay.setText(tipPercentText);
+        Math.round(tempPercentDollarAmount = Double.parseDouble(startingBillAmount.getText().toString()));
+        tipDollarAmount_text = (getString(R.string.dollar_notation_tip) +
+                (String.valueOf(String.format("%.2f",(tempFinalBillAmount*Double.valueOf(tipPercent)/100))))
+                + getString(R.string.dollar_notation_tip_ending));
+        tipDollarAmountDisplay.setText(tipDollarAmount_text);
     }
 
     /** This method resets initial state of the app*/

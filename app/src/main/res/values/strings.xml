@@ -2,11 +2,15 @@
     <string name="app_name">EZ Tip</string>
     <string name="starting_bill_header_text">Bill Total (inc. tax):</string>
     <string name="dollar_notation">$</string>
+    <string name="dollar_notation_tip">($</string>
+    <string name="dollar_notation_tip_ending">)</string>
+    <string name="starting_tip">($0.00)</string>
     <string name="starting_bill_hint">0.00</string>
-    <string name="init_final_bill">$ 0.00</string>
+    <string name="zero_dollars">$0.00</string>
     <string name="tip_header_text">How was the service?</string>
     <string name="tip_indicator_text">Tip:</string>
     <string name="init_tip_percentage">15%</string>
+    <string name="percentage">15%</string>
     <string name="party_header_text">Splitting the check?</string>
     <string name="party_indicator_text">Party:</string>
     <string name="init_party_size">1</string>
