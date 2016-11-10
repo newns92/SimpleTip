@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 /* set bill and tip amounts to $0 when user clears the EditText (Fixes crashing bug) */
                 if (s.length() == 0) {
-                    startingBillAmount.setText("0.00");
+                    startingBillAmount.setText(getString(R.string.zero_dollars));
                 } else {
                     displayTipNumbers();
                     displayFinalBill(tipPercent,partySize);
@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 if (s.length() == 0) {
-                    startingBillAmount.setText("0.00");
+                    startingBillAmount.setText(getString(R.string.zero_dollars));
                 } else {
                     displayTipNumbers();
                     displayFinalBill(tipPercent,partySize);
@@ -135,9 +135,8 @@ public class MainActivity extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 if (startingBillAmount.length() == 0) {
                     /* set default starting bill Amount = $0.00 to prevent crash if user moves
-                            progress before before entering bill amount)
-                     */
-                    startingBillAmount.setText("0.00");
+                            progress before before entering bill amount) */
+                    startingBillAmount.setText(getString(R.string.zero_dollars));
                     /* set value of party size = current value on the seekbar + display it in the TextView*/
                     partySize = valueOf(progress);
                     /* If the user attempts to make party size < 1, give error message */
@@ -175,13 +174,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void displayFinalBill(float tip, int party) {
-        Math.round(tempFinalBillAmount = Double.parseDouble(startingBillAmount.getText().toString()));
+        tempFinalBillAmount = Double.parseDouble(startingBillAmount.getText().toString());
         finalBillAmount = (tempFinalBillAmount + (tempFinalBillAmount * (tip/100)));
         overall_total_bill_text = (getString(R.string.dollar_notation) +
                 (String.valueOf(String.format("%.2f",finalBillAmount))));
         overall_total_bill_text_view.setText(overall_total_bill_text);
 
-        Math.round(tempTotalPerPerson = Double.parseDouble(startingBillAmount.getText().toString()));
+        tempTotalPerPerson = Double.parseDouble(startingBillAmount.getText().toString());
         totalPerPerson = ((tempTotalPerPerson + (tempTotalPerPerson * (tip/100)))/party);
         total_per_person_text = (getString(R.string.dollar_notation) +
                 (String.valueOf(String.format("%.2f",totalPerPerson))));
@@ -189,9 +188,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void displayTipNumbers() {
-        tipPercentText = String.valueOf(tipPercent) + getString(R.string.percentage)
+        tipPercentText = String.valueOf(tipPercent) + getString(R.string.percentage);
         tipPercentDisplay.setText(tipPercentText);
-        Math.round(tempPercentDollarAmount = Double.parseDouble(startingBillAmount.getText().toString()));
+        tempPercentDollarAmount = Double.parseDouble(startingBillAmount.getText().toString());
         tipDollarAmount_text = (getString(R.string.dollar_notation_tip) +
                 (String.valueOf(String.format("%.2f",(tempFinalBillAmount*Double.valueOf(tipPercent)/100))))
                 + getString(R.string.dollar_notation_tip_ending));

@@ -10,7 +10,7 @@
     <string name="tip_header_text">How was the service?</string>
     <string name="tip_indicator_text">Tip:</string>
     <string name="init_tip_percentage">15%</string>
-    <string name="percentage">15%</string>
+    <string name="percentage">%</string>
     <string name="party_header_text">Splitting the check?</string>
     <string name="party_indicator_text">Party:</string>
     <string name="init_party_size">1</string>
