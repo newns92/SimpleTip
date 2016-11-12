@@ -17,7 +17,6 @@ public class MainActivity extends AppCompatActivity {
 /*********************************************************
 *               GLOBAL VARIABLES                         *
 *********************************************************/
-
     private EditText startingBillAmount;
     public int tipPercent = 15;
     public int partySize = 2;
@@ -37,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
     private String tipPercentText;
     private TextView overall_total_bill_text_view;
     private TextView total_per_person_text_view;
-
 /********************************************************
 ********************************************************/
 
@@ -57,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         overall_total_bill_text_view = (TextView)findViewById(R.id.overall_total_bill_text_view);
         total_per_person_text_view = (TextView)findViewById(R.id.total_per_person_text_view);
 
-        /* Dynamically display final bill overall + bill per person after user enters starting bill */
+        /* Dynamically display final overall bill  + bill per person after user enters starting bill */
         startingBillAmount.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -83,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        /* Set OnSeekBarChangeListener to change the value of the tip % when the slider is used */
+        /* Set OnSeekBarChangeListener to change the value of tip % when the slider is used */
         tipPercentSlider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -91,33 +89,9 @@ public class MainActivity extends AppCompatActivity {
                     /* set default starting bill Amount = $0.00 to prevent crash if user moves
                             progress bar before before entering bill amount) */
                     startingBillAmount.setText(getString(R.string.starting_bill_hint));
-                    /* set value of tip % = current value on the seekbar + display it in the TextView*/
-                    tipPercent = valueOf(progress);
-                    /* If the user attempts to make tip percent < 1, give error message */
-                    if (tipPercent < 1) {
-                        Toast.makeText(MainActivity.this, "Tip percent can't be less than 1%!",
-                                Toast.LENGTH_SHORT).show();
-                        tipPercent = 1;
-                        displayTipNumbers();
-                        displayFinalBill(tipPercent, partySize);
-                    } else {
-                        displayTipNumbers();
-                        displayFinalBill(tipPercent, partySize);
-                    }
+                    displayTipPercent(progress);
                 } else {
-                        /* set value of tip % = current value on the seekbar + display it in the TextView*/
-                    tipPercent = valueOf(progress);
-                    /* If the user attempts to make tip percent < 1, give error message */
-                    if (tipPercent < 1) {
-                        Toast.makeText(MainActivity.this, "Tip percent can't be less than 1%!",
-                                Toast.LENGTH_SHORT).show();
-                        tipPercent = 1;
-                        displayTipNumbers();
-                        displayFinalBill(tipPercent, partySize);
-                    } else {
-                        displayTipNumbers();
-                        displayFinalBill(tipPercent, partySize);
-                    }
+                    displayTipPercent(progress);
                 }
             }
             @Override
@@ -136,31 +110,9 @@ public class MainActivity extends AppCompatActivity {
                     /* set default starting bill Amount = $0.00 to prevent crash if user moves
                             progress bar before before entering bill amount) */
                     startingBillAmount.setText(getString(R.string.starting_bill_hint));
-                    /* set value of party size = current value on the seekbar + display it in the TextView*/
-                    partySize = valueOf(progress);
-                    /* If the user attempts to make party size < 1, give error message */
-                    if (partySize < 1) {
-                        Toast.makeText(MainActivity.this, "You can't have less than 1 person!",
-                                Toast.LENGTH_SHORT).show();
-                        partySize = 1;
-                        partySizeDisplay.setText(String.valueOf(partySize));
-                    } else {
-                        partySizeDisplay.setText(String.valueOf(partySize));
-                        displayFinalBill(tipPercent, partySize);
-                    }
+                    displayPartySize(progress);
                 } else {
-                    /* set value of party size = current value on the seekbar + display it in the TextView*/
-                    partySize = valueOf(progress);
-                    /* If the user attempts to make party size < 1, give error message */
-                    if (partySize < 1) {
-                        Toast.makeText(MainActivity.this, "You can't have less than 1 person!",
-                                Toast.LENGTH_SHORT).show();
-                        partySize = 1;
-                        partySizeDisplay.setText(String.valueOf(partySize));
-                    } else {
-                        partySizeDisplay.setText(String.valueOf(partySize));
-                        displayFinalBill(tipPercent, partySize);
-                    }
+                    displayPartySize(progress);
                 }
             }
             @Override
@@ -172,7 +124,11 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    /** This method displays the final overall bill and final bill per person **/
+/*********************************************************
+ *                      METHODS                          *
+ *********************************************************/
+
+    /** Displays final overall bill and final bill per person **/
     public void displayFinalBill(float tip, int party) {
         tempFinalBillAmount = Double.parseDouble(startingBillAmount.getText().toString());
         finalBillAmount = (tempFinalBillAmount + (tempFinalBillAmount * (tip/100)));
@@ -186,6 +142,38 @@ public class MainActivity extends AppCompatActivity {
                 (String.valueOf(String.format("%.2f",totalPerPerson))));
         total_per_person_text_view.setText(total_per_person_text);
     }
+
+    /* method to set tip amount, final overall bill, final per person amounts as tip slider moves */
+    public void displayTipPercent(int progress) {
+        tipPercent = valueOf(progress);
+                    /* If the user attempts to make tip percent < 1, give error message */
+        if (tipPercent < 1) {
+            Toast.makeText(MainActivity.this, "Tip percent can't be less than 1%!",
+                    Toast.LENGTH_SHORT).show();
+            tipPercent = 1;
+            displayTipNumbers();
+            displayFinalBill(tipPercent, partySize);
+        } else {
+            displayTipNumbers();
+            displayFinalBill(tipPercent, partySize);
+        }
+    }
+
+    /* set value of party size = current value on the seekbar + display it in the TextView*/
+    public void displayPartySize(int progress) {
+        partySize = valueOf(progress);
+        /* If the user attempts to make party size < 1, give error message */
+        if (partySize < 1) {
+            Toast.makeText(MainActivity.this, "You can't have less than 1 person!",
+                    Toast.LENGTH_SHORT).show();
+            partySize = 1;
+            partySizeDisplay.setText(String.valueOf(partySize));
+        } else {
+            partySizeDisplay.setText(String.valueOf(partySize));
+            displayFinalBill(tipPercent, partySize);
+        }
+    }
+
     /** This method displays the amount of the tip based on the current bill amount and tip % **/
     public void displayTipNumbers() {
         tipPercentText = String.valueOf(tipPercent) + getString(R.string.percentage);
