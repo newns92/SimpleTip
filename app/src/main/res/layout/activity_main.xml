@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
         android:background="#eeeeee"
         android:baselineAligned="false"
         android:orientation="vertical"
@@ -22,7 +22,8 @@
             android:id="@+id/starting_bill_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="24dp"
             android:layout_marginTop="16dp"
             android:gravity="center"
             android:text="@string/starting_bill_header_text"
@@ -33,12 +34,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:baselineAligned="false"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginEnd="4dp"
                 android:layout_marginRight="4dp"
                 android:layout_weight="1"
@@ -50,7 +52,7 @@
             <EditText
                 android:id="@+id/starting_bill_input"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:gravity="left"
@@ -67,7 +69,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="32dp"
+            android:layout_weight="1"
             android:gravity="center"
             android:text="@string/tip_header_text"
             android:textAlignment="gravity"
@@ -78,6 +81,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
+            android:layout_weight="1"
             android:layout_marginTop="8dp"
             android:baselineAligned="false"
             android:orientation="horizontal">
@@ -85,7 +89,7 @@
             <TextView
                 android:id="@+id/tip_text"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginLeft="50dp"
                 android:layout_marginStart="50dp"
                 android:layout_weight="1"
@@ -97,7 +101,7 @@
             <TextView
                 android:id="@+id/tip_percent_text_view"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:text="@string/init_tip_percentage"
@@ -108,7 +112,7 @@
             <TextView
                 android:id="@+id/tip_dollar_amount_text_view"
                 android:layout_width="80dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="left"
                 android:text="@string/starting_tip"
@@ -121,6 +125,7 @@
             android:id="@+id/tip_percent_slider"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:max="50"
             android:progress="15"
             android:thumb="@drawable/thumb_holo_light" />
@@ -129,6 +134,7 @@
             android:id="@+id/split_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="24dp"
             android:gravity="center_horizontal"
@@ -140,6 +146,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
             android:baselineAligned="false"
@@ -152,7 +159,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="right"
-
                 android:text="@string/party_indicator_text"
                 android:textAlignment="gravity"
                 android:textSize="18sp" />
@@ -176,20 +182,22 @@
             android:id="@+id/party_size_slider"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:max="20"
             android:progress="2"
             android:thumb="@drawable/thumb_holo_light" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="122dp"
             android:layout_marginTop="16dp"
+            android:layout_weight="1"
             android:baselineAligned="false"
             android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:baselineAligned="false"
                 android:orientation="vertical">
@@ -200,6 +208,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:layout_marginTop="16dp"
+                    android:layout_weight="1"
                     android:gravity="center_horizontal"
                     android:text="@string/overall_bill_header_text"
                     android:textAlignment="gravity"
@@ -211,6 +220,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
+                    android:layout_weight="1"
                     android:layout_marginTop="8dp"
                     android:gravity="center_horizontal"
                     android:text="@string/zero_dollars"
@@ -222,7 +232,7 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:baselineAligned="false"
                 android:gravity="right"
@@ -235,6 +245,7 @@
                     android:layout_marginBottom="16dp"
                     android:layout_marginTop="16dp"
                     android:gravity="center_horizontal"
+
                     android:text="@string/per_person_bill_header_text"
                     android:textAlignment="gravity"
                     android:textColor="@android:color/black"
@@ -256,14 +267,15 @@
 
         </LinearLayout>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="4dp"
-            android:onClick="clearAll"
-            android:text="@string/clear_button_text" />
-
     </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="4dp"
+        android:onClick="clearAll"
+        android:text="@string/clear_button_text" />
 
 </RelativeLayout>
