@@ -120,6 +120,22 @@ public class MainActivity extends AppCompatActivity {
  *                      METHODS                          *
  *********************************************************/
 
+    /* Check if it is 1st time user is running app and display quick, simple instructions if so*/
+//    public void checkFirstRun() {
+//        boolean isFirstRun = getSharedPreferences("PREFERENCE", MODE_PRIVATE).getBoolean("isFirstRun", true);
+//        if (isFirstRun){
+//            // Display the dialog
+//            new AlertDialog.Builder(this).setTitle("First Run")
+//                    .setMessage("This only pops up once")
+//                    .setNeutralButton("OK", null).show();
+//
+//            getSharedPreferences("PREFERENCE", MODE_PRIVATE)
+//                    .edit()
+//                    .putBoolean("isFirstRun", false)
+//                    .apply();
+//        }
+//    }
+
     /** Displays final overall bill and final bill per person **/
     public void displayFinalBill(float tip, int party) {
         double tempFinalBillAmount = Double.parseDouble(startingBillAmount.getText().toString());
