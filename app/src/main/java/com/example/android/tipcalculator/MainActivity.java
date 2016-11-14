@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         /* Inflate main activity XML layout */
         setContentView(R.layout.activity_main);
 
-        /* Find the Views w/in main activity */
+        /* Find the Views w/in Main Activity */
         startingBillAmount = (EditText)findViewById(R.id.starting_bill_input);
         tipPercentSlider = (SeekBar)findViewById(R.id.tip_percent_slider);
         tipPercentDisplay = (TextView)findViewById(R.id.tip_percent_text_view);
@@ -47,14 +47,16 @@ public class MainActivity extends AppCompatActivity {
         overall_total_bill_text_view = (TextView)findViewById(R.id.overall_total_bill_text_view);
         total_per_person_text_view = (TextView)findViewById(R.id.total_per_person_text_view);
 
-        /* Dynamically display final overall bill  + bill per person after user enters starting bill */
+        /* Dynamically display final overall bill  + final bill per person as (and after) user enters
+            starting bill amount */
         startingBillAmount.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                /* set bill and tip amounts to $0 when user clears the EditText (Fixes crashing bug) */
+                /* set starting bill and tip amounts to $0.00 when user clears the EditText
+                    - Fixes crashing bug when EditText is empty */
                 if (s.length() == 0 || TextUtils.isEmpty(s)) {
                     startingBillAmount.setText(getString(R.string.starting_bill_hint));
                 } else {
@@ -73,18 +75,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        /* Set OnSeekBarChangeListener to change the value of tip % when the slider is used */
+        /* Set OnSeekBarChangeListener to change the value of the tip % as the slider is used */
         tipPercentSlider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                if (startingBillAmount.length() == 0) {
-                    /* set default starting bill Amount = $0.00 to prevent crash if user moves
-                            progress bar before before entering bill amount) */
-                    startingBillAmount.setText(getString(R.string.starting_bill_hint));
-                    displayTipPercent(progress);
-                } else {
-                    displayTipPercent(progress);
-                }
+                /* Set the default Starting Bill Amount = $0.00 to prevent a crash if the user moves
+                    the progress bar before having entered a starting bill amount */
+                displayProgress(progress);
             }
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -94,18 +91,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        /* Set OnSeekBarChangeListener to change the value of the party size when the slider is used */
+        /* Set OnSeekBarChangeListener to change the value of the party size as the slider is used */
         partySizeSlider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                if (startingBillAmount.length() == 0) {
-                    /* set default starting bill Amount = $0.00 to prevent crash if user moves
-                            progress bar before before entering bill amount) */
-                    startingBillAmount.setText(getString(R.string.starting_bill_hint));
-                    displayPartySize(progress);
-                } else {
-                    displayPartySize(progress);
-                }
+                /* Set the default Starting Bill Amount = $0.00 to prevent a crash if the user moves
+                    the progress bar before having entered a starting bill amount */
+                    displayProgress(progress);
             }
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -135,7 +127,14 @@ public class MainActivity extends AppCompatActivity {
 //                    .apply();
 //        }
 //    }
-
+    public void displayProgress(int progress) {
+        if (startingBillAmount.length() == 0) {
+            startingBillAmount.setText(getString(R.string.starting_bill_hint));
+            displayTipPercent(progress);
+        } else {
+            displayTipPercent(progress);
+        }
+    }
     /** Displays final overall bill and final bill per person **/
     public void displayFinalBill(float tip, int party) {
         double tempFinalBillAmount = Double.parseDouble(startingBillAmount.getText().toString());
