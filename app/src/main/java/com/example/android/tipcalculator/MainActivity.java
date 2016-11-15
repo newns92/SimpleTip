@@ -34,10 +34,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        /* Inflate main activity XML layout */
+        /* Inflate the Main Activity XML layout */
         setContentView(R.layout.activity_main);
 
-        /* Find the Views w/in Main Activity */
+        /* Find the Views w/in the Main Activity */
         startingBillAmount = (EditText)findViewById(R.id.starting_bill_input);
         tipPercentSlider = (SeekBar)findViewById(R.id.tip_percent_slider);
         tipPercentDisplay = (TextView)findViewById(R.id.tip_percent_text_view);
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         overall_total_bill_text_view = (TextView)findViewById(R.id.overall_total_bill_text_view);
         total_per_person_text_view = (TextView)findViewById(R.id.total_per_person_text_view);
 
-        /* Dynamically display final overall bill  + final bill per person as (and after) user enters
+        /* Dynamically display final bill overall and per person as (and after) user enters a
             starting bill amount */
         startingBillAmount.addTextChangedListener(new TextWatcher() {
             @Override
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
             }
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                /* set starting bill and tip amounts to $0.00 when user clears the EditText
+                /* Set the starting bill and tip amounts to $0.00 when user clears the EditText
                     - Fixes crashing bug when EditText is empty */
                 if (s.length() == 0 || TextUtils.isEmpty(s)) {
                     startingBillAmount.setText(getString(R.string.starting_bill_hint));
@@ -66,12 +66,6 @@ public class MainActivity extends AppCompatActivity {
             }
             @Override
             public void afterTextChanged(Editable s) {
-                if (s.length() == 0 || TextUtils.isEmpty(s)) {
-                    startingBillAmount.setText(getString(R.string.starting_bill_hint));
-                } else {
-                    displayTipNumbers();
-                    displayFinalBill(tipPercent,partySize);
-                }
             }
         });
 
@@ -79,10 +73,16 @@ public class MainActivity extends AppCompatActivity {
         tipPercentSlider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                /* Set the default Starting Bill Amount = $0.00 to prevent a crash if the user moves
-                    the progress bar before having entered a starting bill amount */
-                displayProgress(progress);
-            }
+                /* Set starting bill to $0.00 if user attempts to move the slider before entering a
+                    starting bill amount
+                        - Fixes crashing bug when EditText is empty */
+                if (startingBillAmount.length() == 0) {
+                    startingBillAmount.setText(getString(R.string.starting_bill_hint));
+                    displayTipPercent(progress);
+                } else {
+                    displayTipPercent(progress);
+                }
+            };
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
             }
@@ -95,10 +95,16 @@ public class MainActivity extends AppCompatActivity {
         partySizeSlider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                /* Set the default Starting Bill Amount = $0.00 to prevent a crash if the user moves
-                    the progress bar before having entered a starting bill amount */
-                    displayProgress(progress);
-            }
+                /* Set starting bill to $0.00 if user attempts to move the slider before entering a
+                    starting bill amount
+                        - Fixes crashing bug when EditText is empty */
+                if (startingBillAmount.length() == 0) {
+                    startingBillAmount.setText(getString(R.string.starting_bill_hint));
+                    displayPartySize(progress);
+                } else {
+                    displayPartySize(progress);
+                }
+            };
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
             }
@@ -107,11 +113,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
 /*********************************************************
  *                      METHODS                          *
  *********************************************************/
-
     /* Check if it is 1st time user is running app and display quick, simple instructions if so*/
 //    public void checkFirstRun() {
 //        boolean isFirstRun = getSharedPreferences("PREFERENCE", MODE_PRIVATE).getBoolean("isFirstRun", true);
@@ -127,33 +131,11 @@ public class MainActivity extends AppCompatActivity {
 //                    .apply();
 //        }
 //    }
-    public void displayProgress(int progress) {
-        if (startingBillAmount.length() == 0) {
-            startingBillAmount.setText(getString(R.string.starting_bill_hint));
-            displayTipPercent(progress);
-        } else {
-            displayTipPercent(progress);
-        }
-    }
-    /** Displays final overall bill and final bill per person **/
-    public void displayFinalBill(float tip, int party) {
-        double tempFinalBillAmount = Double.parseDouble(startingBillAmount.getText().toString());
-        double finalBillAmount = (tempFinalBillAmount + (tempFinalBillAmount * (tip/100)));
-        String overall_total_bill_text = (getString(R.string.dollar_notation) +
-                (String.valueOf(String.format("%.2f",finalBillAmount))));
-        overall_total_bill_text_view.setText(overall_total_bill_text);
 
-        double tempTotalPerPerson = Double.parseDouble(startingBillAmount.getText().toString());
-        double totalPerPerson = ((tempTotalPerPerson + (tempTotalPerPerson * (tip/100)))/party);
-        String total_per_person_text = (getString(R.string.dollar_notation) +
-                (String.valueOf(String.format("%.2f",totalPerPerson))));
-        total_per_person_text_view.setText(total_per_person_text);
-    }
-
-    /* method to set tip amount, final overall bill, final per person amounts as tip slider moves */
+    /* Set the tip amount, final overall and per person bill amounts as the tip slider is moved */
     public void displayTipPercent(int progress) {
-        tipPercent = valueOf(progress);
-                    /* If the user attempts to make tip percent < 1, give error message */
+    tipPercent = valueOf(progress);
+        /* If the user attempts to make tip percent < 1, give error message */
         if (tipPercent < 1) {
             Toast.makeText(MainActivity.this, "Tip percent can't be less than 1%!",
                     Toast.LENGTH_SHORT).show();
@@ -166,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    /* set value of party size = current value on the seekbar + display it in the TextView*/
+    /* Set the party size, final overall and per person bill amounts as the party slider is moved */
     public void displayPartySize(int progress) {
         partySize = valueOf(progress);
         /* If the user attempts to make party size < 1, give error message */
@@ -181,7 +163,28 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    /** This method displays the amount of the tip based on the current bill amount and tip % **/
+    /** Display the final Overall Bill and final Bill Per Person **/
+    public void displayFinalBill(float tip, int party) {
+        /* Get the text from the EditText, convert to String, then to A Double */
+        double tempFinalBillAmount = Double.parseDouble(startingBillAmount.getText().toString());
+        /* Calculate the final bill as the starting bill plus the tip amount */
+        double finalBillAmount = (tempFinalBillAmount + (tempFinalBillAmount * (tip/100)));
+        /* Create the final overall bill text and display it in the appropriate TextView */
+        String overall_total_bill_text = (getString(R.string.dollar_notation) +
+                (String.valueOf(String.format("%.2f",finalBillAmount))));
+        overall_total_bill_text_view.setText(overall_total_bill_text);
+
+        /* Get the text from the EditText, convert to String, then to A Double */
+        double tempTotalPerPerson = Double.parseDouble(startingBillAmount.getText().toString());
+        /* Calculate the final per person bill as the overall bill divided by party size*/
+        double totalPerPerson = ((tempTotalPerPerson + (tempTotalPerPerson * (tip/100)))/party);
+        /* Create the final per person bill text and display it in the appropriate TextView */
+        String total_per_person_text = (getString(R.string.dollar_notation) +
+                (String.valueOf(String.format("%.2f",totalPerPerson))));
+        total_per_person_text_view.setText(total_per_person_text);
+    }
+
+    /* Displays the dollar amount of the tip based on the current bill amount and tip % **/
     public void displayTipNumbers() {
         String tipPercentText = String.valueOf(tipPercent) + getString(R.string.percentage);
         tipPercentDisplay.setText(tipPercentText);
@@ -192,7 +195,7 @@ public class MainActivity extends AppCompatActivity {
         tipDollarAmountDisplay.setText(tipDollarAmount_text);
     }
 
-    /** This method resets initial state of the app*/
+    /** Resets the app to its initial state*/
     public void clearAll(View view) {
         startingBillAmount.setText("");
         tipPercentSlider.setProgress(15);
