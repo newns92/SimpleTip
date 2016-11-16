@@ -1,8 +1,8 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Steve\Dropbox\PersonalAndroidStudioProjects\TipCalc\app\src\main\AndroidManifest.xml:2:1-21:12
+ADDED from C:\Users\Steve\Dropbox\PersonalAndroidStudioProjects\TipCalc\app\src\main\AndroidManifest.xml:2:1-39:12
 	package
-		ADDED from C:\Users\Steve\Dropbox\PersonalAndroidStudioProjects\TipCalc\app\src\main\AndroidManifest.xml:3:5-48
+		ADDED from C:\Users\Steve\Dropbox\PersonalAndroidStudioProjects\TipCalc\app\src\main\AndroidManifest.xml:3:5-40
 		INJECTED from C:\Users\Steve\Dropbox\PersonalAndroidStudioProjects\TipCalc\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\Steve\Dropbox\PersonalAndroidStudioProjects\TipCalc\app\src\main\AndroidManifest.xml
 	android:versionName
@@ -24,12 +24,12 @@ MERGED from [com.android.support:support-v4:23.4.0] C:\Users\Steve\Dropbox\Perso
 	android:supportsRtl
 		ADDED from C:\Users\Steve\Dropbox\PersonalAndroidStudioProjects\TipCalc\app\src\main\AndroidManifest.xml:8:9-35
 	android:allowBackup
-		ADDED from C:\Users\Steve\Dropbox\PersonalAndroidStudioProjects\TipCalc\app\src\main\AndroidManifest.xml:6:9-35
+		ADDED from C:\Users\Steve\Dropbox\PersonalAndroidStudioProjects\TipCalc\app\src\main\AndroidManifest.xml:6:9-36
 	android:icon
 		ADDED from C:\Users\Steve\Dropbox\PersonalAndroidStudioProjects\TipCalc\app\src\main\AndroidManifest.xml:10:9-45
 	android:theme
 		ADDED from C:\Users\Steve\Dropbox\PersonalAndroidStudioProjects\TipCalc\app\src\main\AndroidManifest.xml:9:9-40
-activity#com.example.android.tipcalculator.MainActivity
+activity#com.example.android.ezTip.MainActivity
 ADDED from C:\Users\Steve\Dropbox\PersonalAndroidStudioProjects\TipCalc\app\src\main\AndroidManifest.xml:11:9-16:20
 	android:name
 		ADDED from C:\Users\Steve\Dropbox\PersonalAndroidStudioProjects\TipCalc\app\src\main\AndroidManifest.xml:11:19-47
