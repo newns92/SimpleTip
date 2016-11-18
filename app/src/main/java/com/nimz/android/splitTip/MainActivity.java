@@ -1,4 +1,4 @@
-package com.example.android.ezTip;
+package com.nimz.android.splitTip;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
                     displayFinalBill(tipPercent,partySize);
                     startingBillAmount.setSelection(startingBillAmount.getText().length());
                 } else {
+                    /* Convert user input into US currency values */
                     if (!s.toString().matches("^\\$(\\d{1,3}(\\,\\d{3})*|(\\d+))(\\.\\d{2})?$")) {
                         String userInput = "" + s.toString().replaceAll("[^\\d]", "");
                         StringBuilder cashAmountBuilder = new StringBuilder(userInput);
@@ -84,14 +85,12 @@ public class MainActivity extends AppCompatActivity {
                         Selection.setSelection(startingBillAmount.getText(), cashAmountBuilder.toString().length() + 1);
 
                         startingBillAmount.addTextChangedListener(this);
+                        /* Display new amounts in TextViews */
                         displayTipNumbers();
                         displayFinalBill(tipPercent,partySize);
                         startingBillAmount.setSelection(startingBillAmount.getText().length());
                     }
-//                    displayTipNumbers();
-//                    displayFinalBill(tipPercent,partySize);
                 }
-
             }
             @Override
             public void afterTextChanged(Editable s) {

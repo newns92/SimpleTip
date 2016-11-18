@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">EZ Tip</string>
+    <string name="app_name">Split Tip</string>
     <string name="starting_bill_header_text">Bill Total (inc. tax):</string>
     <string name="dollar_notation">$</string>
     <string name="dollar_notation_tip">($</string>
